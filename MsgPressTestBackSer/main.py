@@ -46,7 +46,9 @@ def getTask():
         task.status = result[7]
         print 'getTask status:%d'%task.status
         
+#         cur.execute('UPDATE task_info SET status=%d WHERE task_id=%d'%(const.TaskStatusReady, task.task_id))
         cur.execute(const.SqlUpdateTaskStatus%(const.TaskStatusReady, task.task_id))
+        conn.commit();
     cur.close()
     conn.close()
 
