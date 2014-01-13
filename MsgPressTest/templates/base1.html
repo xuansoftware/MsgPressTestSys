@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Shortcut Icon" href="{{ STATIC_URL }}img/shortcut.png">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>MsgPressTest</title>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
+
+<!-- Bootstrap core CSS -->
+<link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="{{ STATIC_URL }}css/navbar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<div id="content">
+		{% block content %} {% endblock %} <br />
+	</div>
+	<br />
+	<div id="footer">
+		技术支持：andyxzhang<br /> Copyright (C) 1998-2012 TENCENT All Rights
+		Reserved.<br /> 腾讯公司 <a
+			href="http://www.tencent.com/law/mo_law.shtml?/law/copyright.htm"
+			target="_blank">版权所有</a>
+	</div>
+</body>
+</html>

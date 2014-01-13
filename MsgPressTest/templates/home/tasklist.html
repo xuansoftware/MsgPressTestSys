@@ -1,0 +1,59 @@
+﻿{% extends 'base.html' %}
+
+{% block content %}
+<div id="report-container" style="padding:5px;">
+{% if tasks %}
+  <p>
+  {% if task_error %}
+    <span style="float:centre;color:blue;" >{{task_error}}</span>
+  {% endif %}
+	<h3>最新的任务</h3>
+  </p>
+  <table style="table-layout:fixed;word-break:break-all;">
+    <tr>
+      <th style="width:16em;background-color:#66ccff;color:white;">任务</th>
+      <th style="width:8em;background-color:#66ccff;color:white;">创建人</th>
+      <th style="width:8em;background-color:#66ccff;color:white;">消息类型</th>
+      <th style="width:8em;background-color:#66ccff;color:white;">消息数量</th>
+      <th style="width:8em;background-color:#66ccff;color:white;">消息发送目标</th>
+      <th style="width:16em;background-color:#66ccff;color:white;">任务状态</th>
+      <!--th style="width:10em;background-color:#66ccff;color:white;">开始时间</th>
+      <th style="width:10em;background-color:#66ccff;color:white;">结束时间</th>
+      <th style="width:8em;background-color:#66ccff;color:white;">创建人</th>
+      <th style="background-color:#66ccff;color:white;">状态</th-->
+    </tr>
+    {% for task in tasks %}
+    <tr style="background-color:{% cycle '#f0f0f0' '#cfcfcf' %};">
+      <td style="text-align:center">{{ task.task_id }}</td>
+      <td style="text-align:center">{{ task.login_uid }}</td>
+      <td style="text-align:center">{{ task.type }}</td>
+      <td style="text-align:center">{{ task.count }}</td>
+      <td style="text-align:center">{{ task.task_uid }}</td>
+      <td style="text-align:center;">
+        {% if task.status == 0 %}
+        排队中
+		{% elif task.status == 1 %}
+		准备开始
+        {% elif task.status == 2 %}
+		正在处理中
+		{% elif task.status == 3 %}
+        已完成&nbsp;<a href="report?task_id={{task.task_id}}" >查看</a>
+		{% elif task.status == 1000 %}
+        内部错误
+        {% else %}
+        请联系技术支持人员
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% if isNotAll %}
+	<a href="?getAll=True" >获取全部</a>
+  {% endif %}
+  
+{% else %}
+  <p>没有差异任务可以显示。</p>
+{% endif %}
+</div>
+
+{% endblock content %}

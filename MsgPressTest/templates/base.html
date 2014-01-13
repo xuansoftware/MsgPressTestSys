@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<link rel = "Shortcut Icon" href="{{ STATIC_URL }}img/shortcut.png">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Magnifier</title>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
+
+<style>
+body {
+  margin: 0 auto;
+  padding: 0;
+  width: 960px;
+  font-size: 10pt;
+  font-family: "微软雅黑";
+  color: #666666;
+}
+
+h1 {
+  font-family: "微软雅黑" "黑体";
+  font-size: 24pt;
+  font-weight: bold;
+  color: white;
+  padding: 12px;
+  margin: 0;
+}
+
+label {
+  display: inline-block;
+  font-weight: bold;
+  line-height: 25px;
+  padding-right: 1em;
+}
+
+#header {
+  margin: 0;
+  background-color: #0099CC;
+  height: 6em;
+}
+
+#main-nav {
+  background-color: #0099CC;
+  height: 3em;
+}
+#main-nav ul {
+  margin: 0;
+  padding-left: 20px;
+  background-color: #0099CC;
+}
+#main-nav li {
+  float: left;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 4px;
+  padding-top: 0.8em;
+  list-style: none;
+  font-size: 12pt;
+  height: 2em;
+}
+#main-nav li.active {
+  background-color: white;
+  color: #0099CC;
+}
+#main-nav a:link, #main-nav a:visited, #main-nav a:active{
+  color: white;
+  text-decoration: none;
+}
+#main-nav a:hover{
+  text-decoration: underline;
+}
+
+#content {
+  margin: 0 auto;
+  padding: 10px 0;
+  word-wrap:break-word;
+  background-color: white;
+  min-height: 480px;
+}
+
+#content table {
+  clear: both;
+  margin: 0 auto;
+  width: 100%;
+  table-layout:fixed;
+  word-break:break-all;
+}
+#content th {
+  padding: 4px;
+  background-color:#66ccff;
+  color:white;
+}
+#content td {
+  padding: 3px;
+  font-family: "宋体", "Times New Roman";
+}
+
+#footer{
+  clear: both; 
+  background-color: #0099CC; 
+  height: 63px; 
+  margin: 0 auto;
+  text-align: center;
+  line-height: 20px; 
+  color: white; 
+  padding-top: 8px;
+  margin: auto;
+}
+
+#header a:link, #header a:visited, #header a:active{
+  color: white;
+}
+#footer a:link, #footer a:visited, #footer a:active{
+  color: white;
+  text-decoration: none;
+}
+#footer a:hover{
+  text-decoration: underline;
+}
+
+.text-main{
+  border: solid 1px #bababa;
+  color: #212121;
+  font-family: "微软雅黑" Tahoma;
+  font-size: 11pt;
+  margin: 5px;
+  padding: 4px 6px;
+}
+.text-sub{
+  border: solid 1px #bababa;
+  color: #212121;
+  font-family: "微软雅黑" Tahoma;
+  font-size: 10pt;
+  margin: 5px 0;
+  padding: 2px 6px;
+}
+.btn-main {
+  background-color: #007fdf;
+  border: none;
+  color: white;
+  font-family: "微软雅黑" Tahoma;
+  font-size: 10pt;
+  margin: 5px;
+  padding: 5px 12px;
+}
+.btn-sub {
+  background-color: #cacaca;
+  border: none;
+  color: #212121;
+  font-family: "微软雅黑" Tahoma;
+  font-size: 10pt;
+  margin: 5px;
+  padding: 5px 12px;
+}
+input[type="checkboxd"] {
+  opacity: 0;
+}
+select {
+  border: 1px solid #bababa;
+}
+</style>
+{% block htmlhead %}
+{% endblock htmlhead %}
+</head>
+
+<body>
+<div id="header">
+  <h1>消息压力测试平台</h1>
+</div>
+<div id="main-nav">
+  <ul>
+	<li id="nav-comp"><a href="{% url "new_task" %}">新建任务</a></li>
+    <li id="nav-diff"><a href="{% url "task_list" %}">任务列表</a></li>   
+  </ul>
+</div>
+<div id="content">
+{% block content %}
+{% endblock %}
+<br />
+</div>
+<br />
+<div id="footer">
+技术支持：andyxzhang<br />
+Copyright (C) 1998-2014 TENCENT All Rights Reserved.<br />
+腾讯公司
+<a href="http://www.tencent.com/law/mo_law.shtml?/law/copyright.htm" target="_blank">版权所有</a>
+</div> 
+</body>
+</html>

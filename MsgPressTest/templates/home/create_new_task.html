@@ -1,0 +1,82 @@
+{% extends 'base.html' %} {% block content %}
+<style>
+#report-content {
+	font-family: "微软雅黑";
+}
+
+h2 {
+	font-family: "微软雅黑" "黑体";
+	font-size: 18pt;
+	font-weight: bold;
+	color: black;
+	padding: 12px;
+	margin: 0;
+}
+
+.spa {
+	font-size: 12px;
+	color: #0066ff;
+}
+
+.put {
+	font-size: 12px;
+	font-family: Arial;
+	color: #0066ff;
+	background-color: #fef4d9;
+	padding: 0px;
+	border-style: none;
+}
+
+.put2 {
+	font-size: 12px;
+	color: #0066ff;
+	text-align: center;
+	border-width: medium;
+	border-style: none;
+}
+</style>
+
+<!--script type="text/javascript">
+$(document).ready(function(){ 
+	$("#form0").submit(function() {
+        var filepath=$("input[name='data_file']").val(); 
+        var extStart=filepath.lastIndexOf("."); 
+        var ext=filepath.substring(extStart,filepath.length).toUpperCase(); 
+        if(ext!=".HPROF"&&ext!=".TXT"){ 
+			alert("文件限于hprof和txt格式"); 
+			return false; 
+        }          
+		return true;       
+	}); 
+}); 
+</script-->
+
+{% if form.errors %}
+<p style="color: red;">Please correct the error{{
+	form.errors|pluralize }} below.</p>
+{% endif %}
+
+<form action="" method="post">
+{% csrf_token %}
+	<table>
+		{{form.as_table}}
+	</table>
+
+	<!--div class="field">
+		{{ form.task_uid.errors }} <label for="id_task_uid">目标用户ID:</label> {{ form.task_uid }}
+	</div>
+	<div class="field">
+		{{ form.msg.errors }} <label for="id_msg">内容：</label> {{ form.msg }}
+	</div>
+	<div class="field">
+		{{ form.type.errors }} <label for="id_type">类型:</label> {{
+		form.type }}
+	</div>
+	<div class="field">
+		{{ form.count.errors }} <label for="id_count">数量:</label> {{
+		form.count }}
+	</div-->
+	<input type="submit" value="提交">
+</form>
+
+{% endblock content %}
