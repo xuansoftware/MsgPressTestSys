@@ -11,12 +11,12 @@
   </p>
   <table style="table-layout:fixed;word-break:break-all;">
     <tr>
-      <th style="width:16em;background-color:#66ccff;color:white;">任务</th>
+      <th style="width:12em;background-color:#66ccff;color:white;">任务</th>
       <th style="width:8em;background-color:#66ccff;color:white;">创建人</th>
       <th style="width:8em;background-color:#66ccff;color:white;">消息类型</th>
       <th style="width:8em;background-color:#66ccff;color:white;">消息数量</th>
       <th style="width:8em;background-color:#66ccff;color:white;">消息发送目标</th>
-      <th style="width:16em;background-color:#66ccff;color:white;">任务状态</th>
+      <th style="width:12em;background-color:#66ccff;color:white;">任务状态</th>
       <!--th style="width:10em;background-color:#66ccff;color:white;">开始时间</th>
       <th style="width:10em;background-color:#66ccff;color:white;">结束时间</th>
       <th style="width:8em;background-color:#66ccff;color:white;">创建人</th>
@@ -25,7 +25,13 @@
     {% for task in tasks %}
     <tr style="background-color:{% cycle '#f0f0f0' '#cfcfcf' %};">
       <td style="text-align:center">{{ task.task_id }}</td>
-      <td style="text-align:center">{{ task.login_uid }}</td>
+      <td style="text-align:center">
+      {% if task.login_uid == '0' %}
+      默认用户
+      {% else %}
+      {{ task.login_uid }}
+      {% endif %}
+      </td>
       <td style="text-align:center">{{ task.type }}</td>
       <td style="text-align:center">{{ task.count }}</td>
       <td style="text-align:center">{{ task.task_uid }}</td>

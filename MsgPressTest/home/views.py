@@ -71,17 +71,19 @@ class CreateTaskView(TemplateView):
         login_uid = 0
         task_uid=cd['task_uid']
         msg=cd['msg'] 
-        type=cd['type']
+        task_type=cd['type']
         count=cd['count']
         
         print 'task_uid', task_uid
         print 'msg', msg
-        print 'type', type
+        print 'type', task_type
         print 'count', count
         
         
-        TaskInfo.insert(task_id=task_id, login_uid=login_uid, task_uid=cd['task_uid'],
-                         msg=cd['msg'], type=cd['type'], count=cd['count'], status=0)
+        TaskInfo.insert(task_id=task_id, login_uid=login_uid, task_uid=task_uid,
+                         msg=msg, type=task_type, count=count, status=0)
+#         TaskInfo.insert(task_id=task_id, login_uid=login_uid, task_uid=cd['task_uid'],
+#                          msg=cd['msg'], task_type=cd['type'], count=cd['count'], status=0)
         
         return HttpResponseRedirect(reverse('task_list'))
     
